@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Cassette -loader</title>
+  <style>
+    =:root {
+      --backgroundColor: rgb(51 73 70);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .wrapper {
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--backgroundColor);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .tape_wrapper {
+      position: absolute;
+      top: 13.5vw;
+      transform: rotate(180deg);
+    }
+
+    .tape {
+      z-index: 10;
+      width: 22vw;
+      height: 18vw;
+      stroke-dasharray: 302%;
+      stroke-dashoffset: 302%;
+      animation: brokeTape 1.2s ease alternate infinite;
+    }
+
+    @keyframes brokeTape {
+      from {
+        stroke-dashoffset: 302%;
+      }
+      to {
+        stroke-dashoffset: 0%;
+      }
+    }
+
+    .cassette {
+      position: relative;
+      bottom: 8vw;
+      width: 30vw;
+      height: 18vw;
+      display: flex;
+      justify-content: center;
+    }
+
+    .cassette_static {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cassette_moving {
+      position: absolute;
+      width: 29.29vw;
+      top: 5.63vw;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      transform: translateX(-0.19vw);
+      height: 3.5vw;
+      z-index: 1;
+    }
+
+    .cassette_moving_el {
+      width: 3.5vw;
+      animation: cassetteElRotate 4s linear infinite alternate;
+    }
+
+    .cassette_moving_hole {
+      width: 3.5vw;
+      height: 3.5vw;
+      border-radius: 50%;
+      background-color: var(--backgroundColor);
+    }
+
+    .cassette_moving_tape {
+      height: 7vw;
+      width: 7vw;
+      border-radius: 50%;
+      background-color: #1d1d1d;
+      border: 1px solid #888;
+    }
+
+    .cassette_moving_tape.right {
+      animation: cassetteTapeShrink 4s linear infinite alternate;
+    }
+
+    .cassette_moving_tape.left {
+      animation: cassetteTapeGrow 4s linear infinite alternate;
+    }
+
+    @keyframes cassetteElRotate {
+      from {
+        transform: rotate(0);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes cassetteTapeGrow {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(2);
+      }
+    }
+
+    @keyframes cassetteTapeShrink {
+      from {
+        transform: scale(2);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes cassetteFadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+    .credit {
+      position: fixed;
+      bottom: 1em;
+      left: 1em;
+      font-size: 20px;
+      font-family: "Abel", sans-serif;
+      color: white;
+    }
+
+    a {
+      color: orange;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #ffbaf6;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div class="cassette" id="cassette">
+      <div class="tape_wrapper">
+        <svg class="tape" width="422" height="215" viewBox="0 0 422 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M77.5 214C77.5 187 96.2 133.1 51 107.5C-5.5 75.5 -11 19 39.5 19C90 19 92.5 78.5 128 102C163.5 125.5 253.5 35 275.5 19C297.5 3 365.5 -12.5 401 50C436.5 112.5 406.5 130 376 131C345.5 132 306 142.5 301 161.5C296 180.5 336.005 180.25 369 183C393 185 393 214 393 214" stroke="black" stroke-width="9" />
+        </svg>
+      </div>
+      <div class="cassette_moving">
+        <div class="cassette_moving_tape left"></div>
+        <div class="cassette_moving_tape right"></div>
+      </div>
+      <div class="cassette_moving">
+        <div class="cassette_moving_hole"></div>
+        <div class="cassette_moving_hole"></div>
+      </div>
+      <div class="cassette_moving">
+        <img src="https://github.com/RomanovskiiArsenii/cassette/blob/main/cassette_el.png?raw=true" alt="cassette_moving_el" class="cassette_moving_el">
+        <img src="https://github.com/RomanovskiiArsenii/cassette/blob/main/cassette_el.png?raw=true" alt="cassette_moving_el" class="cassette_moving_el">
+      </div>
+      <img src="https://github.com/RomanovskiiArsenii/cassette/blob/main/cassette.png?raw=true" alt="cassette" class="cassette_static">
+    </div>
+  </div>
+  <script>
+    // Redirect to Page 2 after 3 seconds
+      setTimeout(function() {
+          location.href = 'birthday1.html';
+      }, 3000);
+  </script>
+
+
+</body>
+
+</html>
