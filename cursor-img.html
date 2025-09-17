@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<head>
+  <title>
+    index
+  </title>
+  <style>
+    body {
+      background-color: black;
+      height: 100vh;
+      margin: 0px;
+      overflow: hidden;
+    }
+
+    .image {
+      width: 40vmin;
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+
+    .image[data-status="inactive"] {
+      display: none;
+    }
+
+    .image[data-status="active"] {
+      display: block;
+    }}
+
+    /* -- YouTube Link Styles -- */
+
+    body.menu-toggled > .meta-link > span {
+      color: rgb(30, 30, 30);
+    }
+
+    #source-link {
+      bottom: 60px;
+    }
+
+    #source-link > i {
+      color: rgb(94, 106, 210);
+    }
+
+    #yt-link > i {
+      color: rgb(239, 83, 80);
+    }
+
+    .meta-link {
+      align-items: center;
+      backdrop-filter: blur(3px);
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      bottom: 10px;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+      cursor: pointer;  
+      display: inline-flex;
+      gap: 5px;
+      left: 10px;
+      padding: 10px 20px;
+      position: fixed;
+      text-decoration: none;
+      transition: background-color 400ms, border-color 400ms;
+      z-index: 10000;
+    }
+
+    .meta-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .meta-link > i, .meta-link > span {
+      height: 20px;
+      line-height: 20px;
+    }
+
+    .meta-link > span {
+      color: white;
+      font-family: "Rubik", sans-serif;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <img class="image" data-index="0" data-status="inactive" src="new-6/new-1.jpg" />
+  <img class="image" data-index="1" data-status="inactive" src="new-6/new-2.jpg" />
+  <img class="image" data-index="2" data-status="inactive" src="new-6/new-3.jpg" />
+  <img class="image" data-index="3" data-status="inactive" src="new-6/new-4.jpg" />
+  <img class="image" data-index="4" data-status="inactive" src="new-6/new-5.jpg" />
+  <img class="image" data-index="5" data-status="inactive" src="new-6/new-6.jpg" />
+  <img class="image" data-index="6" data-status="inactive" src="new-6/new-7.jpg" />
+  <img class="image" data-index="7" data-status="inactive" src="new-6/new-8.jpg" />
+  <img class="image" data-index="8" data-status="inactive" src="new-6/new-9.jpg" />
+  <img class="image" data-index="9" data-status="inactive" src="new-6/new-10.jpg" />
+
+  <a id="source-link" class="meta-link" href="heart-loader.html" target="_blank">
+    <i class="fa-solid fa-link"></i>
+    <span>Click This</span>
+  </a>
+
+  
+  <script>
+    const images = document.getElementsByClassName("image");
+
+    let globalIndex = 0,
+        last = { x: 0, y: 0 };
+
+    const activate = (image, x, y) => {
+      image.style.left = `${x}px`;
+      image.style.top = `${y}px`;
+      image.style.zIndex = globalIndex;
+
+      image.dataset.status = "active";
+
+      last = { x, y };
+    }
+
+    const distanceFromLast = (x, y) => {
+      return Math.hypot(x - last.x, y - last.y);
+    }
+
+    const handleOnMove = e => {
+      if(distanceFromLast(e.clientX, e.clientY) > (window.innerWidth / 20)) {
+        const lead = images[globalIndex % images.length],
+              tail = images[(globalIndex - 5) % images.length];
+
+        activate(lead, e.clientX, e.clientY);
+
+        if(tail) tail.dataset.status = "inactive";
+
+        globalIndex++;
+      }
+    }
+
+    window.onmousemove = e => handleOnMove(e);
+
+    window.ontouchmove = e => handleOnMove(e.touches[0]);
+  </script>
+</body>
