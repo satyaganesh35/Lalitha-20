@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Replit</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: black;
+    }
+
+    #container {
+      height: 90px;
+      width: 189px;
+    }
+
+    .center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -94px;
+      margin-top: -45px;
+    }
+
+    .teardrop {
+      transform: translate3d(0, 0, 0);
+      border: 20px solid #FFFFFF;
+      border-radius: 50% 50% 0;
+      float: left;
+      height: 50px;
+      width: 50px;
+      box-shadow: 0 0 15px 0px rgba(255, 255, 255, 0.8), 0px 0px 15px rgba(255, 255, 255, 0.8) inset;
+    }
+
+    .tearLeft {
+      margin-right: 9px;
+      transform: rotate(-45deg);
+    }
+
+    .tearRight {
+      transform: rotate(135deg);
+    }
+
+    #ball-holder1 {
+      min-width: 60px;
+      min-height: 60px;
+      max-width: 60px;
+      max-height: 60px;
+      /*background-color: #F00;*/
+
+      display: block;
+      float: left;
+      position: relative;
+      top: -90px;
+      left: 0px;
+      animation: ballPath1 1.5s linear infinite;
+    }
+
+    #ball-holder2 {
+      min-width: 90px;
+      min-height: 90px;
+      max-width: 90px;
+      max-height: 90px;
+      /*background-color: #F00;*/
+
+      display: block;
+      float: left;
+      position: relative;
+      top: -90px;
+      left: -1px;
+      animation: ballPath3 1.5s linear infinite;
+    }
+
+    .ballSettings {
+      height: 10px;
+      width: 10px;
+      background-color: black;
+      border-radius: 100%;
+      position: relative;
+    }
+
+    .ball1 {
+      top: 40px;
+      left: 5px;
+      animation: ball1 1.5s linear infinite;
+    }
+
+    #contain1 {
+      width: 90px;
+      height: 90px;
+      animation: ballPath2 1.5s linear infinite;
+    }
+
+    .ball2 {
+      top: 40px;
+      left: 5px;
+      animation: ball3 1.5s linear infinite;
+    }
+
+    #contain2 {
+      height: 90px;
+      left: 100px;
+      position: relative;
+      top: -90px;
+      width: 90px;
+      animation: ballPath4 1.5s linear infinite;
+    }
+
+    @keyframes ballPath1 {
+      0% {
+        transform: rotate(225deg);
+      }
+      37.5% {
+        transform: rotate(495deg);
+      }
+      50% {
+        transform: rotate(495deg);
+      }
+      75% {
+        transform: rotate(585deg);
+      }
+      100% {
+        transform: rotate(585deg);
+      }
+    }
+
+    @keyframes ballPath2 {
+      0% {
+        transform: translate(0px, 0px);
+      }
+      37.5% {
+        transform: translate(0px, 0px);
+      }
+      50% {
+        transform: translate(49.5px, 49.5px);
+        opacity: 1;
+      }
+      50.001% {
+        opacity: 0;
+      }
+      75% {
+        transform: translate(0px, 0px);
+        opacity: 0;
+      }
+      99.999% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes ballPath3 {
+      0% {
+        transform: rotate(675deg);
+        opacity: 0;
+      }
+      37.5% {
+        transform: rotate(675deg);
+      }
+      50% {
+        transform: rotate(675deg);
+        opacity: 0;
+      }
+      50.001% {
+        transform: rotate(675deg);
+        opacity: 1;
+      }
+      87.5% {
+        transform: rotate(405deg);
+      }
+      100% {
+        transform: rotate(405deg);
+      }
+    }
+
+    @keyframes ballPath4 {
+      0% {
+        transform: translate(0px, 0px);
+      }
+      87.5% {
+        transform: translate(0px, 0px);
+      }
+      100% {
+        transform: translate(-49.5px, 49.5px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <body>
+    <div id="container" class="center">
+      <div class="teardrop tearLeft"></div>
+      <div class="teardrop tearRight"></div>
+
+      <div id="contain1">
+        <div id="ball-holder1">
+          <div class="ballSettings ball1"></div>
+        </div>
+      </div>
+
+      <div id="contain2">
+        <div id="ball-holder2">
+          <div class="ballSettings ball2"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+   <script>
+     // Redirect to Page 2 after 3 seconds
+       setTimeout(function() {
+           location.href = 'roundedimages.html';
+       }, 3000);
+   </script>
+
+
+</body>
+
+</html>
